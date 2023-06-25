@@ -29,8 +29,8 @@ function getOkay(res) {
 };
 
 async function getNewsBySource(res, id) {
-    switch(id) {
-        case 'elChapuzas':
+    switch(id.toLowerCase()) {
+        case 'elchapuzas':
             const data = await scrapeElChapuzas();
             return res.json(data);
         case 'okay':
