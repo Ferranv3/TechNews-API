@@ -1,5 +1,5 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 async function scrapeElChapuzas() {
     const url = 'https://elchapuzasinformatico.com/';
@@ -24,4 +24,23 @@ async function scrapeElChapuzas() {
     return scrapedData;
 }
 
-export default async function scrapeElChapuzas();
+function getOkay(res) {
+    res.json('okay')
+};
+
+async function getNewsBySource(res, id) {
+    switch(id) {
+        case 'elChapuzas':
+            const data = await scrapeElChapuzas();
+            return res.json(data);
+        case 'okay':
+            return getOkay(res);
+    }
+}
+
+module.exports = function (app) {
+    app.get('/api/:id', function (req, res) {
+        // use mongoose to get all todos in the database
+        getNewsBySource(res, req.params.id);
+    });
+};
