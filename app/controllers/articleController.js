@@ -1,4 +1,6 @@
 const scrapeArticleElChapuzas = require('../scrapers/articleScrapers/articleElChapuzas');
+const scrapeArticleProfesionalReview = require('../scrapers/articleScrapers/articleProfesionalReview');
+const scrapeArticleHardZone = require('../scrapers/articleScrapers/articleHardZone');
 
 async function getArticleBySource(res, id) {
     let data;
@@ -9,10 +11,10 @@ async function getArticleBySource(res, id) {
         data = await scrapeArticleElChapuzas(id);
         return res.json(data);
     } else if (lowerCaseId.includes('profesionalreview')) {
-        data = await scrapeProfesionalReview();
+        data = await scrapeArticleProfesionalReview(id);
         return res.json(data);
     } else if (lowerCaseId.includes('hardzone')) {
-        data = await scrapeHardZone();
+        data = await scrapeArticleHardZone(id);
         return res.json(data);
     } else if (lowerCaseId.includes('okay')) {
         return res.json('okay');
