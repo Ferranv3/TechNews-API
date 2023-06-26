@@ -10,11 +10,13 @@ async function scrapeHardZone() {
 
     const scrapedData = [];
     articles.each((index, element) => {
-        const link = $(element).find('a.rocket-lazyload');
+        let href = $(element).find('a.rectangle-link').attr('href');
         const title = $(element).find('h2.title a').text();
         const description = $(element).find('div.excerpt p').text();
-        const href = link.attr('href');
-        scrapedData.push({ title, description, href });
+        if (!href) href = $(element).find('h2.title a').attr('href');
+        let img = $(element).find('a.rectangle-link img').attr('src');
+        if (!img) img = $(element).find('a img').attr('src');
+        scrapedData.push({ title, description, href, img });
     });
 
     return scrapedData;
