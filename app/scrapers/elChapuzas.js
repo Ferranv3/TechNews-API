@@ -1,6 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');
+//const puppeteer = require('puppeteer');
 
 async function scrapeElChapuzas() {
     const url = 'https://elchapuzasinformatico.com/';
@@ -24,7 +24,7 @@ async function scrapeElChapuzas() {
     return scrapedData;
 }
 
-async function scrapeIMGArticle(url) {
+/*async function scrapeIMGArticle(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -37,6 +37,6 @@ async function scrapeIMGArticle(url) {
 
     await browser.close();
     return img;
-}
+}*/
 
 module.exports = scrapeElChapuzas;

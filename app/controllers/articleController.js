@@ -4,7 +4,6 @@ const scrapeArticleHardZone = require('../scrapers/articleScrapers/articleHardZo
 
 async function getArticleBySource(res, id) {
     let data;
-    
     const lowerCaseId = id.toLowerCase();
 
     if (lowerCaseId.includes('elchapuzas')) {
