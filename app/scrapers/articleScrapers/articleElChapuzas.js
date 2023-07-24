@@ -8,10 +8,11 @@ async function scrapeArticleElChapuzas(uri) {
     const $ = cheerio.load(html);
     const title = $('h1.post-title').text();
     const p = $('div.post-content p');
-
+    let text;
     const content = [];
+
     p.each((index, element) => {
-        const text = $(element).text();
+        text = $(element).text();
         content.push(text);
     });
 

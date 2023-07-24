@@ -8,6 +8,11 @@ async function scrapeArticleHardZone(uri) {
     const content = [];
     const title = $('h1.title').text();
     const p = $('div.excerpt p');
+    let img = $('div.featured-image img').attr('src');
+    if (img)  {
+        img = '<img src="' + img + '" />'
+        content.push(img);
+    }
 
     let text = '';
 
@@ -20,7 +25,16 @@ async function scrapeArticleHardZone(uri) {
 
     p1.each((index, element) => {
         text = $(element).text();
-        content.push(text);
+        if (text === '') {
+            img = null;
+            img = $(element).children().attr('src');
+            if (img) {
+                img = '<img src="' + img + '" />'
+                content.push(img);
+            }
+        } else {
+            content.push(text);
+        }
     });
 
     return { title: title, uri: uri, content: content };
