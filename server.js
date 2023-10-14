@@ -7,7 +7,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var allowedOrigins = ['http://localhost:3000', 'https://technews-ferran.vercel.app'];
+var allowedOrigins = ['http://localhost:3000', 'https://technews-ferran.vercel.app', 'https://technews.ferranv3.com'];
 
 app.use(cors({
   origin: function(origin, callback){
