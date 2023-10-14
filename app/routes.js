@@ -12,6 +12,7 @@ module.exports = function (app) {
     });
 
     app.get('/api/:id', function (req, res) {
+        res.header('Access-Control-Allow-Origin', '*')
         getNewsBySource(res, req.params.id);
     });
 };
